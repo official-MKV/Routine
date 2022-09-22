@@ -1,2 +1,2 @@
-bunch==1.0.1
+git+https://github.com/official-MKV/bunch.git@master
 pywin32==304
