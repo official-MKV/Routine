@@ -3,6 +3,7 @@ import win32com.client
 from datetime import datetime as dt
 from bunch import bunchify
 import os
+import Scripts
  
 class TaskScheduler:
     # Default variables
@@ -17,11 +18,12 @@ class TaskScheduler:
         self.root = self.scheduler.GetFolder(self._ROOT_FOLDER)
 
     def add_task(self,task):
-        for i in task:
-            self.create_task(bunchify(i))
+        tasks =task.generate_task_profile()
+        for i in  tasks:
+            self._create_task(bunchify(i))
         print("Done!")
 
-    def create_task(self, task_obj):
+    def _create_task(self, task_obj):
         # print(task_obj)
         time = task_obj.time
         new_task = self.scheduler.NewTask(0)
@@ -45,6 +47,11 @@ class TaskScheduler:
             '',  # No password
             TASK_LOGON_NONE
         )
+    
+    def remove_task(self):
+        pass
+    def update_task(self):
+        pass
     def _check_path(self):
         path = os.path.join(self._ROOT_TASKS_,self._ROOT_FOLDER)
         print( os.path.exists(path))
@@ -66,12 +73,12 @@ class TaskScheduler:
 
 
 class Task:
-    starttask=''
-    endtask =''
-    reminder=''
+    starttask='start.py'
+    endtask ='end.py'
+    reminder='reminder.py'
     reminder_duration= 5
     def __init__(self,id,name,start_time,end_time) -> None:
-        self.id =id
+        self._id =id
         self.name=name
         self.start_time=dt.combine(datetime.date.today(),start_time)
         self.end_time=dt.combine(datetime.date.today(),end_time)
@@ -82,21 +89,24 @@ class Task:
                 'id':self.id,
                 'name':self.name+' R',
                 'time':self.start_time - datetime.timedelta(minutes=self.reminder_duration),
-                'script':self.reminder,
+                'script':Scripts.create_batch_file(self.id,self.reminder),
                 'description':'Task Reminder'
             },
             {
                 'id':self.id,
                 'name':self.name+' S',
                 'time':self.start_time,
-                'script':self.starttask,
+                'script':Scripts.create_batch_file(self.id,self.starttask),
                 'description':'Start of task'
             },
             {
                 'id':self.id,
                 'name':self.name + ' E',
                 'time':self.end_time,
-                'script':self.endtask,
+                'script':Scripts.create_batch_file(self.id,self.endtask),
                 'description':'End of task'
             }
         ]
+    @property
+    def id(self):
+        return self._id
