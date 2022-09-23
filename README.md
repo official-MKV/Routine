@@ -1,2 +1,2 @@
 # Routine
-<span style="background-color:red;height:20px;width:fit-content">Automation<span>
+<div style="background-color:red; width:fit-content; border-radius:3px; padding:5px">report</div>
