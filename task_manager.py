@@ -1,8 +1,9 @@
 import json
 import datetime
+import os 
 class Manager:
     # default 
-    database_location = "C:\\Users\\vemma\\Desktop\\Routine\db\\temdb.json"  ## TODO: fix the path issue
+    database_location = f"C:\\Users\\vemma\\Desktop\\Routine\\db\\temdb.json"  ## TODO: fix the path issue
     def __init__(self):
         self._data = json.load(open(self.database_location,'r+'))
         self.active='Active'

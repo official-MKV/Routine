@@ -89,21 +89,21 @@ class Task:
                 'id':self.id,
                 'name':self.name+' R',
                 'time':self.start_time - datetime.timedelta(minutes=self.reminder_duration),
-                'script':Scripts.create_batch_file(self.id,self.reminder),
+                'script':Scripts.create_batch_file(self.id+'R',self.reminder),
                 'description':'Task Reminder'
             },
             {
                 'id':self.id,
                 'name':self.name+' S',
                 'time':self.start_time,
-                'script':Scripts.create_batch_file(self.id,self.starttask),
-                'description':'Start of task'
+                'script':Scripts.create_batch_file(self.id+'S',self.starttask),
+                'description':'Start of task'   
             },
             {
                 'id':self.id,
                 'name':self.name + ' E',
                 'time':self.end_time,
-                'script':Scripts.create_batch_file(self.id,self.endtask),
+                'script':Scripts.create_batch_file(self.id+'E',self.endtask),
                 'description':'End of task'
             }
         ]
