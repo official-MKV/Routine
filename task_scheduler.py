@@ -80,6 +80,7 @@ class Task:
     def __init__(self,id,name,start_time,end_time) -> None:
         self._id =id
         self.name=name
+        # TODO: write function to ensure end time is always greater than start time
         self.start_time=dt.combine(datetime.date.today(),start_time)
         self.end_time=dt.combine(datetime.date.today(),end_time)
 
@@ -89,21 +90,21 @@ class Task:
                 'id':self.id,
                 'name':self.name+' R',
                 'time':self.start_time - datetime.timedelta(minutes=self.reminder_duration),
-                'script':Scripts.create_batch_file(self.id+'R',self.reminder),
+                'script':Scripts.create_batch_file(str(self.id)+'R',self.reminder),
                 'description':'Task Reminder'
             },
             {
                 'id':self.id,
                 'name':self.name+' S',
                 'time':self.start_time,
-                'script':Scripts.create_batch_file(self.id+'S',self.starttask),
+                'script':Scripts.create_batch_file(str(self.id)+'S',self.starttask),
                 'description':'Start of task'   
             },
             {
                 'id':self.id,
                 'name':self.name + ' E',
                 'time':self.end_time,
-                'script':Scripts.create_batch_file(self.id+'E',self.endtask),
+                'script':Scripts.create_batch_file(str(self.id)+'E',self.endtask),
                 'description':'End of task'
             }
         ]

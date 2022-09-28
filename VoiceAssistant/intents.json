@@ -1,0 +1,25 @@
+{
+    "intents":
+    [
+        {
+            "tag":"greeting",
+            "patterns":["Hey","Hello","What's up ?","How is it going ?","Hi"],
+            "responses":["Hello sir","Hello, What can I do for you ?"]
+        },
+        {
+            "tag":"create_routine",
+            "patterns":["Please create a new Routine","Add new a routine","create new routine","new routine"],
+            "responses":[""]
+        },
+        {
+            "tag":"routine_completed",
+            "patterns":["Yea I finished","I completed the task","Yea I was able to finish","I completed the task","I am done","I have finshed", "yes","Yeah","Affirmative"],
+            "responses":[""]
+        },
+        {
+            "tag":"routine_failed",
+            "patterns":["I wasn't able to finish","I faild","I didn't finish","It wasn't completed","I didn't complete the task","Task is incomplete","no"," not at all","nope"],
+            "responses":[""]
+        }
+    ]
+}

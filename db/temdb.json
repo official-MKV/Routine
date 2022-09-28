@@ -1,15 +1,1 @@
-{
-    "1234532": {
-        "task_name": "Take the dog out",
-        "start_time": "10:00AM",
-        "end_time": "10:30AM"
-    },
-    "12325343": {
-        "name": "Afternoon Reading",
-        "start_time": "12:30:00",
-        "end_time": "15:00:00",
-        "date_created": " 23-09-2022 12:27:46",
-        "state": "Non-active",
-        "history": {}
-    }
-}
+{"1234532": {"task_name": "Take the dog out", "start_time": "10:00AM", "end_time": "10:30AM"}, "12325343": {"name": "Afternoon Jogging", "start_time": "10:40:00", "end_time": "10:32:00", "date_created": " 28-09-2022 10:38:12", "state": "Non-active", "history": {}}, "12325343": {"name": "Afternoon Jogging", "start_time": "10:40:00", "end_time": "10:32:00", "date_created": " 28-09-2022 10:47:43", "state": "Non-active", "history": {}}}

@@ -23,12 +23,20 @@ class Manager:
             'state':self.not_active,
             'history':{}
         }
-        json.dump(self._data,open(self.database_location,'w')) ## NOT-EFFICIENT
+        self._save()
 
     def update_state(self,id):
         ...
     def get_task_history(self):
         ...
+
+    def _save(self):
+        json.dump(self._data,open(self.database_location,'w'))
+
+        
     def update_history(self,id,acheived:bool):
-        ...
+        date = datetime.datetime.strftime(datetime.datetime.today().date(),"%d-%m-%Y")
+        self._data[id]['history'][date] = self.acheived if  acheived else self.failed
+        self._save()
+
      
